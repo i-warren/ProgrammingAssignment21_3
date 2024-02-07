@@ -3,17 +3,22 @@ import java.io.*;
 
 public class CountKeywords {
     public static void main(String[] args) throws Exception {
-        Scanner input = new Scanner(System.in);
-        System.out.print("Enter a Java source file: ");
-        String filename = input.nextLine();
+        // Check for command line argument
+        if (args.length != 1) {
+            System.out.println("Usage: java sourceFile");
+            System.exit(1);
+        }
 
-        File file = new File(filename);
+
+
+
+        File file = new File(args[0]);
         if (file.exists()) {
-            System.out.println("The number of keywords in " + filename
+            System.out.println("The number of keywords in " + args[0]
                     + " is " + countKeywords(file));
         }
         else {
-            System.out.println("File " + filename + " does not exist");
+            System.out.println("File " + args[0] + " does not exist");
         }
     }
 
@@ -38,6 +43,13 @@ public class CountKeywords {
 
         while (input.hasNext()) {
             String word = input.next();
+            // TODO COMMENT if "//"" don't count
+            if (){
+
+            }
+            // TODO STRING elseif "\"" don't count while not "\"
+            // TODO BLOCK COMMENT else if "/*" don't count while not "*/"
+
             if (keywordSet.contains(word))
                 count++;
         }
